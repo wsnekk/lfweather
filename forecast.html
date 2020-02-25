@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Lake Forest Weather</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#088FC3"/>
+		<meta name="Description" content="Your Local Weather">
+		<link rel="manifest" href="manifest.json">
+		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({
+				google_ad_client: "ca-pub-4923282258151558",
+				enable_page_level_ads: true
+			});
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52495574-19"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-52495574-19');
+		</script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script>
+			var request = new XMLHttpRequest();
+			var data = {};
+			var currentDate = new Date();
+			var lat = '33.646963';
+			var lon = '-117.686047';
+			var url = ('https://lfweather.herokuapp.com/forecast/' + lat + ',' + lon);
+			
+			function getLocation() {
+				console.log('Locating user...');
+				if (navigator.geolocation) {
+					console.log('Posible GPS found...');
+					navigator.geolocation.getCurrentPosition(checkPosition, handleError);
+				} else { 
+					console.log('Location not avalible, defaulting to 33.646963, -117.686047');
+					getData();
+				}
+			}
+			
+			function checkPosition(position) {
+				//bottom left: 33.606301, -117.718207
+				//top right: 33.706016, -117.619621
+				if (position.coords.latitude > '33.606301' && position.coords.latitude < '33.706016' && position.coords.longitude > '-117.718207' && position.coords.longitude < '-117.619621') {
+					lat = position.coords.latitude;
+					lon = position.coords.longitude;
+					url = ('https://lfweather.herokuapp.com/forecast/' + lat + ',' + lon);
+					console.log('User in Lake Forest, setting new latitude and longitude: ' + lat + ', ' + lon);
+					console.log('New URL: ' + url);
+				} else {
+					console.log('User not in Lake Forest currently, defaulting to 33.646963, -117.686047');
+				}
+				getData();
+			}
+			
+			function handleError(error) {
+				switch(error.code) {
+					case error.PERMISSION_DENIED:
+						console.log('User denied the request for Geolocation, defaulting to 33.646963, -117.686047');
+						break;
+					case error.POSITION_UNAVAILABLE:
+						console.log('Location information is unavailable, defaulting to 33.646963, -117.686047');
+						break;
+					case error.TIMEOUT:
+						console.log('The request to get user location timed out, defaulting to 33.646963, -117.686047');
+						break;
+					case error.UNKNOWN_ERROR:
+						console.log('An unknown error occurred, defaulting to 33.646963, -117.686047');
+						break;
+				}
+				getData();
+			}
+			
+			function getData() {/*
+				console.log('Requesting data...');
+				request.open('GET', url);
+	
+				request.onreadystatechange = function () {
+					if (this.readyState === 4) {
+						if (this.status === 200) {
+							currentDate = new Date();
+							data = JSON.parse(this.responseText);
+							console.log('Data recieved: ', data);
+						}
+					}
+				};
+				
+				request.onerror = function () {
+					console.log('!Error while requesting data, onError triggered');
+					document.getElementById('errorMessage').style.display='block';
+				};
+			
+				request.send();*/
+			}
+			
+			getLocation();
+			
+		</script>
+		<style>
+			body {
+				font-family: verdana;
+				background-color: rgb(9, 79, 195);
+			    margin: 8px;
+			}
+
+			h1 {
+				font-family: verdana;
+				font-size: 2.4em;
+				font-weight: 600;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 15px 0px 15px 0px;
+			}
+			
+			h2 {
+				font-family: verdana;
+				font-size: 1.5em;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 15px auto;
+			}
+			
+			h3 {
+				font-family: verdana;
+				font-size: 2.4em;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 0px 0px 40px 0px;
+			}
+
+			div.errorMessage {
+				padding: 0px 5%;
+				color: #FF3535;
+				font-family: verdana;
+				font-size: 0.9em;
+				font-weight: bold;
+			}
+			
+			.linksGroup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				margin: 20px 0px;
+			}
+			
+			.linksGroup .links {
+				font-family: verdana;
+				border: 2px solid #FFFFEA;
+				background-color: Transparent;
+				color: #FFFFEA;
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				cursor: pointer;
+				transition: all 0.5s;
+				float: left;
+				border-radius: 4px;
+				margin: 0px 5px;
+			}
+			
+			.linksGroup .links span {
+				cursor: pointer;
+				display: inline-block;
+				position: relative;
+				transition: 0.5s;
+			}
+			
+			.linksGroup .links span:after {
+				content: '\00bb';
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				right: -20px;
+				transition: 0.5s;
+			}
+	
+			.linksGroup .links:hover span {
+				padding-right: 20px;
+			}
+
+			.linksGroup .links:hover span:after {
+				opacity: 1;
+				right: 0;
+			}
+			
+			p {
+				font-family: verdana;
+				font-size: 1.0em;
+				text-align: center;
+				color: #FFFFEA;
+			}
+			
+			div.about {
+				width: 90%;
+				font-family: verdana;
+				font-size: 1.1em;
+				text-align: center;
+				color: white;
+				word-wrap: normal;
+			}
+			
+			.radarContainer {
+				margin: 5px 1%;
+				text-align: center;
+			}
+			
+			#bKSMcyXAlDun {
+				display: none;
+				margin-bottom: 30px;
+				padding: 20px 10px;
+				background: #D30000;
+				text-align: center;
+				font-weight: bold;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			#wrapfabtest {
+			}
+			
+			.adBanner {
+				background-color: transparent;
+				height: 1px;
+				width: 1px;
+			}
+		</style>
+		<!-- Awdblock Detection -->
+		<div id="bKSMcyXAlDun">
+			Hi, I see that you're using an adblocker. While I understand your decision,<br>
+			this website takes a lot of money to sustain. By disabling your ad blocker, you<br>
+			allow me to generate revenue, in which 100% is put towards paying for the site. Thank you!  
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', init, false);
+
+			function init(){
+				adsBlocked(function(blocked){
+					if(blocked){
+						document.getElementById('bKSMcyXAlDun').style.display='block';
+					}
+				})
+			}
+
+			function adsBlocked(callback){
+				var testURL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+
+				var myInit = {
+					method: 'HEAD',
+					mode: 'no-cors'
+				};
+
+				var myRequest = new Request(testURL, myInit);
+
+				fetch(myRequest).then(function(response) {
+					return response;
+				}).then(function(response) {
+					console.log(response);
+					callback(false)
+				}).catch(function(e){
+					console.log(e)
+					callback(true)
+				});
+			}
+			
+			$(document).ready(function(){
+				if($("#wrapfabtest").height() > 0) {
+				} else {
+					document.getElementById('bKSMcyXAlDun').style.display='block';
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Forecast</h1>
+		<div class="linksGroup">
+			<a class="links" href="https://lfweather.net" role="button" name="Home">
+				<span>Home </span>
+			</a>
+			<a class="links" href="about" role="button" name="About">
+				<span>About </span>
+			</a>
+		</div>
+		<div id="errorMessage" class="errorMessage" style="display: none;">There was an error fetching the data</div>
+		<div id="wrapfabtest">
+			<div class="adBanner">
+			</div>
+		</div>
+		<center>
+			<h2>Rain</h2>
+			<div id="radarContainer" class="radarContainer">
+				
+			</div>
+			<h2>Radar</h2>
+			<div id="radarContainer" class="radarContainer">
+				<script src='https://darksky.net/map-embed/@radar,33.598,-117.657,11.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar'></script>
+			</div>
+		</center>
+		<noscript>Please enable Javascript on your device to view the weather!</noscript>
+	</body>
+</html>

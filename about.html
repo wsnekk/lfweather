@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Lake Forest Weather</title>
+		<link http-equiv="Cache-control" content="max-age=31536000" rel="stylesheet" href="normalize.css">
+		<link rel="preconnect" href="https://www.google-analytics.com">
+		<link rel="preconnect" href="https://pagead2.googlesyndication.com">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#088FC3"/>
+		<meta name="author" content="ALEEF02">
+		<meta name="Description" content="About Lake Forest Weather.">
+		<meta charset="utf-8">
+		<meta name="keywords" content="LF Weather, Lake Forest Weather, Lake Forest, Lake Forest California, Lake Forest California Weather, ALEEF02">
+		<link rel="manifest" href="manifest.json">
+		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel="apple-touch-icon" href="weatherIcons/apple-touch-icon.png">
+		<link rel="apple-touch-startup-image" href="weatherIcons/apple-touch-icon.png">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+		<script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52495574-19"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-52495574-19', {'site_speed_sample_rate': 100});
+			
+			var trackOutboundLink = function(url) {
+				ga('send', 'event', 'outbound', 'click', url, {
+					'transport': 'beacon',
+					'hitCallback': function(){document.location = url;}
+				});
+			}
+			
+			if ('serviceWorker' in navigator) {
+				console.log('Queing Worker...');
+				window.addEventListener('load', function() {
+					console.log('Registering Worker...');
+					navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+						console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					}, function(err) {
+						console.log('ServiceWorker registration failed: ', err);
+					});
+				});
+			} else {
+				console.log('Browser does not support service worker');
+			}
+		</script>
+		<style>
+			body {
+				font-family: verdana;
+				background-color: rgb(8,67,163);
+				margin: 8px;
+			}
+
+			h1 {
+				font-family: verdana;
+				font-weight: 600;
+				font-size: 2.4em;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 15px 0px 15px 0px;
+			}
+			
+			h2 {
+				font-family: verdana;
+				font-size: 1.6em;
+				font-weight: 600;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 30px auto 0px;
+			}
+			
+			h3 {
+				font-family: verdana;
+				font-size: 1.1em;
+				font-weight: bold;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 30px auto 0px;
+			}
+
+			.linksGroup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				margin: 20px 0px;
+			}
+			
+			.linksGroup .links {
+				font-family: verdana;
+				border: 2px solid #FFFFEA;
+				background-color: Transparent;
+				color: #FFFFEA;
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				cursor: pointer;
+				transition: all 0.5s;
+				float: left;
+				border-radius: 4px;
+				margin: 0px 5px;
+			}
+			
+			.linksGroup .links span {
+				cursor: pointer;
+				display: inline-block;
+				position: relative;
+				transition: 0.5s;
+			}
+			
+			.linksGroup .links span:after {
+				content: '\00bb';
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				right: -20px;
+				transition: 0.5s;
+			}
+	
+			.linksGroup .links:hover span {
+				padding-right: 20px;
+			}
+
+			.linksGroup .links:hover span:after {
+				opacity: 1;
+				right: 0;
+			}
+			
+			p {
+				font-family: verdana;
+				font-size: 1.0em;
+				text-align: center;
+				color: #FFFFEA;
+			}
+			
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			th, td {
+				padding: 8px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+				color: #FFFFEA;
+			}
+			
+			td.rightTable, th.rightTable {
+				text-align: right;
+				padding-left: 15%;
+			}
+						
+			div.about {
+				margin-top: 20px;
+				width: 90%;
+				font-family: verdana;
+				font-size: 1.1em;
+				text-align: center;
+				color: #FFFFEA;
+				word-wrap: normal;
+			}
+			
+			div.credits {
+				margin-top: 20px;
+				width: 100%;
+				font-family: verdana;
+				font-size: 0.8em;
+				text-align: center;
+				color: #FFFFEA;
+				word-wrap: normal;
+				font-style: italic;
+			}
+			
+			.credits p {
+				font-family: verdana;
+				font-size: 0.8em;
+				text-align: center;
+				font-style: italic;
+				color: #FFFFEA;
+			}
+			
+			a:link {
+				color: #18fff4;
+				background-color: transparent;
+				text-decoration: none;
+			}
+	
+			a:visited {
+				color: #83ff75;
+				background-color: transparent;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #9dff00;
+				background-color: transparent;
+				text-decoration: underline;
+			}
+						
+			#bKSMcyXAlDun {
+				display: none;
+				margin-bottom: 30px;
+				padding: 20px 10px;
+				background: #D30000;
+				text-align: center;
+				font-weight: bold;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			#wrapfabtest {
+			}
+			
+			.adBanner {
+				background-color: transparent;
+				height: 1px;
+				width: 1px;
+			}
+			
+			.clearfix{
+				clear:both
+			}
+			
+		</style>
+		<!-- Awdblock Detection -->
+		<div id="bKSMcyXAlDun">
+			Hi, I see that you're using an adblocker. While I understand your decision,<br>
+			this website takes a lot of money to sustain. By disabling your ad blocker, you<br>
+			allow me to generate revenue, in which 100% is put towards paying for the site. Thank you!  
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', init, false);
+
+			function init(){
+				adsBlocked(function(blocked){
+					if(blocked){
+						document.getElementById('bKSMcyXAlDun').style.display='block';
+					}
+				})
+			}
+
+			function adsBlocked(callback){
+				var testURL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+
+				var myInit = {
+					method: 'HEAD',
+					mode: 'no-cors'
+				};
+
+				var myRequest = new Request(testURL, myInit);
+
+				fetch(myRequest).then(function(response) {
+					return response;
+				}).then(function(response) {
+					console.log(response);
+					callback(false)
+				}).catch(function(e){
+					console.log(e)
+					callback(true)
+				});
+			}
+			
+			/*$(document).ready(function(){
+				if($("#wrapfabtest").height() > 0) {
+				} else {
+					document.getElementById('bKSMcyXAlDun').style.display='block';
+				}
+			});*/
+		</script>
+	</head>
+	<body>
+		<h1>About</h1>
+		<div class="linksGroup">
+			<a class="links" href="https://lfweather.net" role="button" name="Home">
+				<span>Home </span>
+			</a>
+		</div>
+		<div id="wrapfabtest">
+			<div class="adBanner">
+			</div>
+		</div>
+		<center>
+			<picture>
+				<source media="(min-width: 550px)" type="image/webp" srcset="close1.webp" style="width: 30%">
+				<source type="image/webp" srcset="close1@2.webp" style="width: 30%">
+				<source media="(min-width: 800px)" type="image/jpg" srcset="close1.jpg" style="width: 30%">
+				<img src="close1@2.jpg" alt="Weather Station Close" style="width:30%">
+			</picture>
+			<picture>
+				<source media="(min-width: 550px)" type="image/webp" srcset="farL.webp" style="width: 53.28%">
+				<source type="image/webp" srcset="farL@2.webp" style="width: 53.28%">
+				<source media="(min-width: 800px)" type="image/jpg" srcset="farL.jpg" style="width: 53.28%">
+				<img src="farL@2.jpg" alt="Weather Station Far" style="width:53.28%">
+			</picture>
+			<div class="about">
+				<p>
+					My name is Anthony and I run this site. I've always thought of weather to be very interesting; it's very unpredictable at times, but at others, we can know exactly what will happen to the minute. But, even with this heavy unpredictability, most weather providers make forecasts using data collected from stations miles away! So, as a hobby, I have built this weather station and website for the residents of Lake Forest using data collected right in Lake Forest. I currently use an Ambient Weather WS-2000 mounted on the top of my house. It records current conditions and logs past conditions. Using the patterns from these, I am able to forecast the weather for the upcoming days.
+				</p>
+			</div>
+			<h2>My Plan</h2>
+			<div class="about">
+				<p>
+					I am currently planning on running this site for as long as I can afford it. I update the site daily with new features and bug fixes. One feature I am currently looking into is lightning detection, which requires another system. If you would like to help me pay for the website, or would like to just give a little tip, you can donate by using the button below. Any amount helps! If you have any bug reports or questions in general, I can be reached at aleef02@lfweather.net Thank you for visiting my site.
+				</p>
+			</div>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_donations" />
+			<input type="hidden" name="business" value="L6ARZYZMA7XBY" />
+			<input type="hidden" name="item_name" value="Donate to help cover the costs of the site!" />
+			<input type="hidden" name="currency_code" value="USD" />
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+			</form>
+			<h2>Common Terms</h2>
+			<div style="overflow-x:auto;">
+				<table>
+					<tr>
+						<th>Term</th>
+						<th class="rightTable">Definition</th>
+					</tr>
+					<tr>
+						<td>Humidity</td>
+						<td class="rightTable">The relative amount of water vapor in the air. Lower values cause dryer days and lower dew points. Higher values cause moister days and higher dew points</td>
+					</tr>
+					<tr>
+						<td>Barometric Pressure</td>
+						<td class="rightTable">The pressure of the air in the atmosphere caused by changing weather conditions</td>
+					</tr>
+					<tr>
+						<td>Barometric Forecast</td>
+						<td class="rightTable">Rough estimation on the weather for the upcoming day. Uses rate of pressure change and current barometric pressure to create a forecast that is correct roughly 70% of the time</td>
+					</tr>
+					<tr>
+						<td>Dew Point</td>
+						<td class="rightTable">The temperature in which water vapor will begin to form into water droplets</td>
+					</tr>
+					<tr>
+						<td>Rain "Event"</td>
+						<td class="rightTable">Continuous rain, and resets to zero if rainfall accumulation is less than 0.04 inches in a 24 hour period.</td>
+					</tr>
+				</table>
+			</div>
+			<h2>FAQ</h2>
+			<div style="overflow-x:auto;">
+				<table>
+					<tr>
+						<th>Question</th>
+						<th class="rightTable">Answer</th>
+					</tr>
+					<tr>
+						<td>What if I am not in Lake Forest? Can I still use LF Weather?</td>
+						<td class="rightTable">Of course! When you visit the site or use the app, scroll down and click "Use My Location". The current conditions and forecast will be pulled from a station closer to you.</td>
+					</tr>
+					<tr>
+						<td>I used the "Use my location" forecast button and now some current conditions are missing</td>
+						<td class="rightTable">When you are more than 3 miles away and you use your location, data is pulled from reliable weather stations closer to your current location and used in the site. If the weather stations in use do not have the data point, the condition is removed from display to remove confusion.</td>
+					</tr>
+					<tr>
+						<td>How do I use your website as an app</td>
+						<td class="rightTable">On Android, look for the prompt at the bottom of your screen to add to homescreen. On iPhone click the share / square with arrow button at the bottom and click add to homescreen</td>
+					</tr>
+				</table>
+			</div>
+		</center>
+		<h3>Credits</h3>
+		<div class="credits">
+			<p>
+				Wind outline, barometric compass and outline provided by ambientweather.net<br>
+				<a href="https://darksky.net/poweredby/" onclick="trackOutboundLink('https://darksky.net/poweredby/'); return false;">Forecast powered in part by Dark Sky</a>
+			</p>
+		</div>
+	</body>
+</html>

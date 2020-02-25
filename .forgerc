@@ -1,0 +1,35 @@
+Location /sitemap
+	Rewrite /sitemap.xml
+	
+Location /about
+	Rewrite /about.html
+	
+Files
+	service-worker.js
+	sitemap.xml
+	favicon.ico
+	favicon-16.png
+	favicon-32.png
+	favicon-72.png
+	favicon-96.png
+	favicon-144.png
+	favicon-192.png
+	favicon-512.png
+	weatherIcons/sunny.png
+	weatherIcons/partlyCloudy.png
+	weatherIcons/cloudy.png
+	weatherIcons/rainy.png
+	weatherIcons/thunderStorm.png
+	weatherIcons/apple-touch-icon.png
+	weatherIcons/darkSky/clear-day.png
+	weatherIcons/darkSky/clear-night.png
+	weatherIcons/darkSky/cloudy.png
+	weatherIcons/darkSky/fog.png
+	weatherIcons/darkSky/partly-cloudy-day.png
+	weatherIcons/darkSky/partly-cloudy-night.png
+	weatherIcons/darkSky/rain.png
+	weatherIcons/darkSky/sleet.png
+	weatherIcons/darkSky/snow.png
+	weatherIcons/darkSky/thunderstorm.png
+	weatherIcons/darkSky/wind.png
+	

@@ -1,0 +1,47 @@
+{  
+    "name":"Lake Forest Weather",
+    "short_name":"LF Weather",
+    "background_color":"#0843a3",
+    "theme_color":"#0843a3",
+    "description":"Your Local Weather for Lake Forest, CA",
+	"display": "standalone",
+	"start_url": "https://lfweather.net",
+	"orientation": "portrait",
+    "icons":[  
+        {  
+            "src":"favicon-16.png",
+            "sizes":"16x16",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-32.png",
+            "sizes":"32x32",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-72.png",
+            "sizes":"72x72",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-96.png",
+            "sizes":"96x96",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-144.png",
+            "sizes":"144x144",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-192.png",
+            "sizes":"192x192",
+            "type":"image/png"
+        },
+        {  
+            "src":"favicon-512.png",
+            "sizes":"512x512",
+            "type":"image/png"
+        }
+    ]
+}

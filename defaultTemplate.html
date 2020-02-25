@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Lake Forest Weather</title>
+		<link http-equiv="Cache-control" content="max-age=31536000" rel="stylesheet" href="normalize.css">
+		<link rel="preconnect" href="https://www.google-analytics.com">
+		<link rel="preconnect" href="https://pagead2.googlesyndication.com">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="theme-color" content="#088FC3"/>
+		<meta name="Description" content="Your Local Weather">
+		<meta charset="utf-8">
+		<link rel="manifest" href="manifest.json">
+		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+		<script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52495574-19"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-52495574-19');
+		</script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<style>
+			body {
+				font-family: verdana;
+				background-color: rgb(8,143,195);
+			    margin: 8px;
+			}
+
+			h1 {
+				font-family: verdana;
+				font-size: 2.4em;
+			    font-weight: 600;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 15px 0px 15px 0px;
+			}
+			
+			h2 {
+				font-family: verdana;
+				font-size: 1.2em;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 20px auto;
+			}
+			
+			h3 {
+				font-family: verdana;
+				font-size: 2.4em;
+				color: #FFFFEA;
+				text-align: center;
+				margin: 0px 0px 40px 0px;
+			}
+
+			.linksGroup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				margin: 20px 0px;
+			}
+			
+			.linksGroup .links {
+				font-family: verdana;
+				border: 2px solid #FFFFEA;
+				background-color: Transparent;
+				color: #FFFFEA;
+				padding: 10px 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				cursor: pointer;
+				transition: all 0.5s;
+				float: left;
+				border-radius: 4px;
+				margin: 0px 5px;
+			}
+			
+			.linksGroup .links span {
+				cursor: pointer;
+				display: inline-block;
+				position: relative;
+				transition: 0.5s;
+			}
+			
+			.linksGroup .links span:after {
+				content: '\00bb';
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				right: -20px;
+				transition: 0.5s;
+			}
+	
+			.linksGroup .links:hover span {
+				padding-right: 20px;
+			}
+
+			.linksGroup .links:hover span:after {
+				opacity: 1;
+				right: 0;
+			}
+			
+			p {
+				font-family: verdana;
+				font-size: 1.0em;
+				text-align: center;
+				color: #FFFFEA;
+			}
+			
+			div.about {
+				width: 90%;
+				font-family: verdana;
+				font-size: 1.1em;
+				text-align: center;
+				color: white;
+				word-wrap: normal;
+			}
+			
+			#bKSMcyXAlDun {
+				display: none;
+				margin-bottom: 30px;
+				padding: 20px 10px;
+				background: #D30000;
+				text-align: center;
+				font-weight: bold;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			#wrapfabtest {
+			}
+			
+			.adBanner {
+				background-color: transparent;
+				height: 1px;
+				width: 1px;
+			}
+		</style>
+		<!-- Awdblock Detection -->
+		<div id="bKSMcyXAlDun">
+			Hi, I see that you're using an adblocker. While I understand your decision,<br>
+			this website takes a lot of money to sustain. By disabling your ad blocker, you<br>
+			allow me to generate revenue, in which 100% is put towards paying for the site. Thank you!  
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', init, false);
+
+			function init(){
+				adsBlocked(function(blocked){
+					if(blocked){
+						document.getElementById('bKSMcyXAlDun').style.display='block';
+					}
+				})
+			}
+
+			function adsBlocked(callback){
+				var testURL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+
+				var myInit = {
+					method: 'HEAD',
+					mode: 'no-cors'
+				};
+
+				var myRequest = new Request(testURL, myInit);
+
+				fetch(myRequest).then(function(response) {
+					return response;
+				}).then(function(response) {
+					console.log(response);
+					callback(false)
+				}).catch(function(e){
+					console.log(e)
+					callback(true)
+				});
+			}
+			
+			$(document).ready(function(){
+				if($("#wrapfabtest").height() > 0) {
+				} else {
+					document.getElementById('bKSMcyXAlDun').style.display='block';
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Title</h1>
+		<div class="linksGroup">
+			<a class="links" href="https://lfweather.net" role="button" name="Home">
+				<span>Home </span>
+			</a>
+			<a class="links" href="https://lfweather.net/forecast" role="button" name="Forecast">
+				<span>Forecast </span>
+			</a>
+			<a class="links" href="https://lfweather.net/about" role="button" name="About">
+				<span>About </span>
+			</a>
+		</div>
+		<div id="wrapfabtest">
+			<div class="adBanner">
+			</div>
+		</div>
+		<noscript>Please enable Javascript on your device to view the weather!</noscript>
+	</body>
+</html>
