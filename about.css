@@ -1,0 +1,212 @@
+:root {
+    --blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
+}
+
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent
+}
+
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+	font-family: verdana;
+	background-color: rgb(8,67,163);
+	margin: 8px;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit
+}
+
+h1 {
+	font-family: verdana;
+	font-weight: 600;
+	font-size: 2.4em;
+	color: #FFFFEA;
+	text-align: center;
+	margin: 15px 0px 15px 0px;
+}
+
+h2 {
+	font-family: verdana;
+	font-size: 1.6em;
+	font-weight: 600;
+	color: #FFFFEA;
+	text-align: center;
+	margin: 30px auto 0px;
+}
+
+h3 {
+	font-family: verdana;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #FFFFEA;
+	text-align: center;
+	margin: 30px auto 0px;
+}
+
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+
+.linksGroup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+.linksGroup .links {
+	font-family: verdana;
+	border: 2px solid #FFFFEA;
+	background-color: Transparent;
+	color: #FFFFEA;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.5s;
+	float: left;
+	border-radius: 4px;
+	margin: 0px 5px;
+}
+
+.linksGroup .links span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.linksGroup .links span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.linksGroup .links:hover span {
+	padding-right: 20px;
+}
+
+.linksGroup .links:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+p {
+	font-family: verdana;
+	font-size: 1.0em;
+	text-align: center;
+	color: #FFFFEA;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	color: #FFFFEA;
+}
+
+td.rightTable, th.rightTable {
+	text-align: right;
+	padding-left: 15%;
+}
+			
+div.about {
+	margin-top: 20px;
+	width: 90%;
+	font-family: verdana;
+	font-size: 1.1em;
+	text-align: center;
+	color: #FFFFEA;
+	word-wrap: normal;
+}
+
+div.credits {
+	margin-top: 20px;
+	width: 100%;
+	font-family: verdana;
+	font-size: 0.8em;
+	text-align: center;
+	color: #FFFFEA;
+	word-wrap: normal;
+	font-style: italic;
+}
+
+.credits p {
+	font-family: verdana;
+	font-size: 0.8em;
+	text-align: center;
+	font-style: italic;
+	color: #FFFFEA;
+}
+
+a:link {
+	color: #18fff4;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #83ff75;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #9dff00;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+#bKSMcyXAlDun {
+	display: none;
+	margin-bottom: 30px;
+	padding: 20px 35px;
+	background: #1e0094;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	border-radius: 5px;
+}
+
+#wrapfabtest {
+}
+
+.adBanner {
+	background-color: transparent;
+	height: 1px;
+	width: 1px;
+}
+
+.clearfix{
+	clear:both
+}

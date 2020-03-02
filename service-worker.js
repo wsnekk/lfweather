@@ -1,5 +1,5 @@
-const PRECACHE = 'precache-v6';
-const RUNTIME = 'runtime-v5';
+const PRECACHE = 'precache-v7';
+const RUNTIME = 'runtime-v7';
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
@@ -56,6 +56,9 @@ self.addEventListener('activate', event => {
 });*/
 
 self.addEventListener('fetch', function(event) {
+	if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') {
+		return;
+	}
 	if (event.request.url.startsWith(self.location.origin)) {
 		event.respondWith(
 			caches.open('RUNTIME').then(function(cache) {

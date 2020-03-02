@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Lake Forest Weather</title>
-		<link http-equiv="Cache-control" content="max-age=31536000" rel="stylesheet" href="normalize.css">
+		<title>Lake Forest Weather - About</title>
+		<link http-equiv="Cache-control" content="max-age=31536000" rel="stylesheet" type="text/css" href="about.css">
 		<link rel="preconnect" href="https://www.google-analytics.com">
 		<link rel="preconnect" href="https://pagead2.googlesyndication.com">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="theme-color" content="#088FC3"/>
+		<meta name="theme-color" content="#0843a3"/>
 		<meta name="author" content="ALEEF02">
 		<meta name="Description" content="About Lake Forest Weather.">
 		<meta charset="utf-8">
@@ -47,192 +47,9 @@
 				console.log('Browser does not support service worker');
 			}
 		</script>
-		<style>
-			body {
-				font-family: verdana;
-				background-color: rgb(8,67,163);
-				margin: 8px;
-			}
-
-			h1 {
-				font-family: verdana;
-				font-weight: 600;
-				font-size: 2.4em;
-				color: #FFFFEA;
-				text-align: center;
-				margin: 15px 0px 15px 0px;
-			}
-			
-			h2 {
-				font-family: verdana;
-				font-size: 1.6em;
-				font-weight: 600;
-				color: #FFFFEA;
-				text-align: center;
-				margin: 30px auto 0px;
-			}
-			
-			h3 {
-				font-family: verdana;
-				font-size: 1.1em;
-				font-weight: bold;
-				color: #FFFFEA;
-				text-align: center;
-				margin: 30px auto 0px;
-			}
-
-			.linksGroup {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
-				margin: 20px 0px;
-			}
-			
-			.linksGroup .links {
-				font-family: verdana;
-				border: 2px solid #FFFFEA;
-				background-color: Transparent;
-				color: #FFFFEA;
-				padding: 10px 15px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
-				cursor: pointer;
-				transition: all 0.5s;
-				float: left;
-				border-radius: 4px;
-				margin: 0px 5px;
-			}
-			
-			.linksGroup .links span {
-				cursor: pointer;
-				display: inline-block;
-				position: relative;
-				transition: 0.5s;
-			}
-			
-			.linksGroup .links span:after {
-				content: '\00bb';
-				position: absolute;
-				opacity: 0;
-				top: 0;
-				right: -20px;
-				transition: 0.5s;
-			}
-	
-			.linksGroup .links:hover span {
-				padding-right: 20px;
-			}
-
-			.linksGroup .links:hover span:after {
-				opacity: 1;
-				right: 0;
-			}
-			
-			p {
-				font-family: verdana;
-				font-size: 1.0em;
-				text-align: center;
-				color: #FFFFEA;
-			}
-			
-			table {
-				border-collapse: collapse;
-				width: 100%;
-				margin-bottom: 10px;
-			}
-
-			th, td {
-				padding: 8px;
-				text-align: left;
-				border-bottom: 1px solid #ddd;
-				color: #FFFFEA;
-			}
-			
-			td.rightTable, th.rightTable {
-				text-align: right;
-				padding-left: 15%;
-			}
-						
-			div.about {
-				margin-top: 20px;
-				width: 90%;
-				font-family: verdana;
-				font-size: 1.1em;
-				text-align: center;
-				color: #FFFFEA;
-				word-wrap: normal;
-			}
-			
-			div.credits {
-				margin-top: 20px;
-				width: 100%;
-				font-family: verdana;
-				font-size: 0.8em;
-				text-align: center;
-				color: #FFFFEA;
-				word-wrap: normal;
-				font-style: italic;
-			}
-			
-			.credits p {
-				font-family: verdana;
-				font-size: 0.8em;
-				text-align: center;
-				font-style: italic;
-				color: #FFFFEA;
-			}
-			
-			a:link {
-				color: #18fff4;
-				background-color: transparent;
-				text-decoration: none;
-			}
-	
-			a:visited {
-				color: #83ff75;
-				background-color: transparent;
-				text-decoration: none;
-			}
-
-			a:hover {
-				color: #9dff00;
-				background-color: transparent;
-				text-decoration: underline;
-			}
-						
-			#bKSMcyXAlDun {
-				display: none;
-				margin-bottom: 30px;
-				padding: 20px 10px;
-				background: #D30000;
-				text-align: center;
-				font-weight: bold;
-				color: #fff;
-				border-radius: 5px;
-			}
-			
-			#wrapfabtest {
-			}
-			
-			.adBanner {
-				background-color: transparent;
-				height: 1px;
-				width: 1px;
-			}
-			
-			.clearfix{
-				clear:both
-			}
-			
-		</style>
-		<!-- Awdblock Detection -->
+		<!-- Adblock Detection -->
 		<div id="bKSMcyXAlDun">
-			Hi, I see that you're using an adblocker. While I understand your decision,<br>
-			this website takes a lot of money to sustain. By disabling your ad blocker, you<br>
-			allow me to generate revenue, in which 100% is put towards paying for the site. Thank you!  
+			Hi there. Thank you for choosing LFWeather as your weather provider. I run this website, ad-free and free of charge, with my motivation being the growth of the user experience. While I plan never to serve ads, your adblocker prohibits Google Analytics, which I use to track site usage. By disabling your adblocker, I can better understand and improve the user experience. I will NEVER sell any data collected. Thank you!
 		</div>
 		<script>
 			document.addEventListener('DOMContentLoaded', init, false);
@@ -265,13 +82,6 @@
 					callback(true)
 				});
 			}
-			
-			/*$(document).ready(function(){
-				if($("#wrapfabtest").height() > 0) {
-				} else {
-					document.getElementById('bKSMcyXAlDun').style.display='block';
-				}
-			});*/
 		</script>
 	</head>
 	<body>
@@ -343,6 +153,10 @@
 					<tr>
 						<td>Rain "Event"</td>
 						<td class="rightTable">Continuous rain, and resets to zero if rainfall accumulation is less than 0.04 inches in a 24 hour period.</td>
+					</tr>
+					<tr>
+						<td>Air Quality</td>
+						<td class="rightTable">The amount of fine particles, smaller than 2.5 micrometers, measured in micro(µ)grams per meter cubed</td>
 					</tr>
 				</table>
 			</div>
