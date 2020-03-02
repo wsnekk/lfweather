@@ -137,7 +137,7 @@ request.onreadystatechange = function () {
 		if (data[0].pm25 <= 12) {
 			document.getElementById('aqiLabel').innerHTML="GOOD";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (27 * data[0].pm25 / 12 - 88) + 'deg)';
-			document.getElementById('aqiLabel').style.color="#019966";
+			document.getElementById('aqiLabel').style.color="#00de94";
 		} else if (data[0].pm25 < 35.5) {
 			document.getElementById('aqiLabel').innerHTML="MODERATE";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (31 * (data[0].pm25 - 12) / 23.49 - 61) + 'deg)';
@@ -145,15 +145,15 @@ request.onreadystatechange = function () {
 		} else if (data[0].pm25 < 55.5) {
 			document.getElementById('aqiLabel').innerHTML="UNHEALTHY FOR SENSITIVE GROUPS";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (30 * (data[0].pm25 - 35.49) / 19.99 - 30) + 'deg)';
-			document.getElementById('aqiLabel').style.color="#FF9932";
+			document.getElementById('aqiLabel').style.color="#ffa345";
 		} else if (data[0].pm25 < 150.5) {
 			document.getElementById('aqiLabel').innerHTML="UNHEALTHY";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (30 * (data[0].pm25 - 55.49) / 94.99) + 'deg)';
-			document.getElementById('aqiLabel').style.color="#CC0932";
+			document.getElementById('aqiLabel').style.color="#ff6363";
 		} else if (data[0].pm25 < 250.5) {
 			document.getElementById('aqiLabel').innerHTML="VERY UNHEALTHY";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (30 + 31 * (data[0].pm25 - 150.49) / 99.99) + 'deg)';
-			document.getElementById('aqiLabel').style.color="#660099";
+			document.getElementById('aqiLabel').style.color="#cd6aff";
 		} else {
 			document.getElementById('aqiLabel').innerHTML="HAZARDOUS";
 			document.getElementById('aqiNeedle').style.transform='rotate(' + (61 + 27 * (data[0].pm25 - 250.49) / 249.5) + 'deg)';
