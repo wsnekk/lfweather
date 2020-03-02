@@ -4,8 +4,15 @@ Location /sitemap
 Location /about
 	Rewrite /about.html
 	
+NotFound
+	Rewrite /index.html
+	
 Files
 	service-worker.js
+	main.js
+	resizeListen.js
+	normalize.css
+	about.css
 	sitemap.xml
 	favicon.ico
 	favicon-16.png
