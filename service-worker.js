@@ -4,10 +4,6 @@ const RUNTIME = 'runtime-v3.7.1';
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
   '/about.html',
-  '/main.js',
-  '/resizeListen,js',
-  '/about.css',
-  '/normalize.css',
   '/weatherIcons/sunny.png',
   '/weatherIcons/partlyCloudy.png',
   '/weatherIcons/cloudy.png',
