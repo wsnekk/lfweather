@@ -74,7 +74,11 @@
 	</head>
 	<body>
 		<h1>Lake Forest Weather</h1>
-		<h2>Provided by ALEEF02</h2>
+		<h2>Provided by 
+			<a href="https://aleef.dev" id="changelogLink" onclick="trackOutboundLink('https://aleef.dev'); return false;">
+				ALEEF02
+			</a>
+		</h2>
 		<div class="linksGroup">
 			<a class="links" href="about" role="button" name="About & FAQ">
 				<span>About & FAQ </span>
@@ -348,7 +352,7 @@
 					<button class="gpsButtons" onClick="getLocation();" role="button" name="useMyLocation">
 						<span>Use My Location </span>
 					</button>
-					<button class="gpsButtons" onClick="getData();" role="button" name="useDefaultLocation">
+					<button class="gpsButtons" onClick="getData(false);" role="button" name="useDefaultLocation">
 						<span>Use Lake Forest </span>
 					</button>
 					<div class="clearfix"></div>

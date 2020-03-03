@@ -69,7 +69,7 @@ function addressToLat() {
 				url = ('https://lfweather.herokuapp.com/forecast/' + lat + ',' + lon);
 				customLocation = true;
 				geocode = 'forward';
-				getData();
+				getData(true);
 			}
 		}
 		geocodeRequest.send();
@@ -583,7 +583,7 @@ function checkPosition(position) {
 	} else {
 		console.log('User still within Lake Forest, only getting forecast data');
 	}
-	getData();
+	getData(false);
 }
 
 function handleError(error) {
@@ -631,8 +631,12 @@ function handleError(error) {
 	}
 }
 
-function getData() {
-	ga("gtag_UA_52495574_19.send", "event", {eventCategory: "data", eventAction: "dataOnClick", eventLabel: "DarkSky Data Requested", eventValue: 0});
+function getData(searchBox) {
+	if (searchBox) {
+		ga("gtag_UA_52495574_19.send", "event", {eventCategory: "data", eventAction: "dataOnClick", eventLabel: "DarkSky Data Requested using search box", eventValue: 0});
+	} else {
+		ga("gtag_UA_52495574_19.send", "event", {eventCategory: "data", eventAction: "dataOnClick", eventLabel: "DarkSky Data Requested", eventValue: 0});
+	}
 	
 	console.log('Hiding buttons...');
 	document.getElementById('forecastErrorMessage').style.display='none';
