@@ -50,6 +50,13 @@ function latToAddress(inLat, inLong) {
 			return reverseGeocodedResponse.display_name;
 		}
 	}
+	geocodeRequest.onerror = function (e) {
+		gtag('event', 'exception', {
+			'description': ('Reverse geocode error: ' + e),
+			'fatal': true
+		});
+		ga("gtag_UA_52495574_19.send", "event", {eventCategory: "error", eventAction: "data", eventLabel: ('Reverse geocode error: ' + e), eventValue: 0});
+	};
 	geocodeRequest.send();
 }
 
@@ -72,6 +79,13 @@ function addressToLat() {
 				getData(true);
 			}
 		}
+		geocodeRequest.onerror = function (e) {
+			gtag('event', 'exception', {
+				'description': ('Forward geocode error: ' + e),
+				'fatal': true
+			});
+			ga("gtag_UA_52495574_19.send", "event", {eventCategory: "error", eventAction: "data", eventLabel: ('Forward geocode error: ' + e), eventValue: 0});
+		};
 		geocodeRequest.send();
 	} else { 
 		console.log('Search box empty...');
@@ -960,7 +974,7 @@ function getData(searchBox) {
 		dataError = true;
 		gtag('event', 'exception', {
 			'description': 'Dark Sky data request failed',
-			'fatal': false
+			'fatal': true
 		});
 		ga("gtag_UA_52495574_19.send", "event", {eventCategory: "error", eventAction: "data", eventLabel: "Dark Sky data request failed", eventValue: 0});
 	};
@@ -1344,6 +1358,13 @@ function init(){
 		if (blocked && navigator.onLine) {
 			console.log('Adblock detected');
 			document.getElementById('bKSMcyXAlDun').style.display='block';
+			setCookie("adBlock", 'true', 730);
+		} else if (!blocked && navigator.onLine) {
+			var adBlockCook = getCookie("adBlock");
+			if (adBlockCook == "true") {
+				ga("gtag_UA_52495574_19.send", "event", {eventCategory: "app", eventAction: "adBlock", eventLabel: "User converted from AdBlock", eventValue: 0});
+				setCookie("adBlock", 'false', 730);
+			}
 		}
 	})
 	
@@ -1506,7 +1527,7 @@ window.onload = function listenForInstall() {
 					ga("gtag_UA_52495574_19.send", "event", {eventCategory: "app", eventAction: "failed", eventLabel: "No deferredPrompt was found when user accepted", eventValue: 0});
 					gtag('event', 'exception', {
 						'description': 'App install requested, no deferredPrompt',
-						'fatal': false
+						'fatal': true
 					});
 				}
 			}
